@@ -1,4 +1,4 @@
-const {qcms, addQcm} = require('../models/inmemory');
+const {qcms, addQcm, addQuestion, questions} = require('../models/inmemory');
 
 const displayQcms = (req, res) => {
     for (let qcm of qcms) {
@@ -28,6 +28,10 @@ const createNewForm = (req, res) => {
         name: req.body.name,
         subject: req.body.subject,
         nbpoints: req.body.nbpoints
+    });
+    addQuestion({
+        id_qcm: qcm.id, 
+        description: req.body.question
     });
     res.redirect('/qcms');
 };
