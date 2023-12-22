@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {displayQcms, displayFormQcm, createNewForm, displayQcmJson, displayQcmDetailed} = require('../controllers/qcms');
+const {displayQcms, displayFormQcm, createNewQcm, displayQcmJson, displayQcmDetailed} = require('../controllers/qcms');
 
 
 // DEFINITION DES ROUTES
@@ -18,7 +18,7 @@ router.get('/json', displayQcmJson);
 
 router.get('/new', displayFormQcm); //handler
 
-router.post('/new', createNewForm);
+router.post('/new', createNewQcm);
 
 //point d'acces pour afficher le detail d'un QCM
 router.get('/:qcmid', displayQcmDetailed)

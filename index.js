@@ -2,6 +2,8 @@ const express = require('express');
 //Application Express
 const app = express();
 
+app.use(express.static(__dirname + 'assets'));
+
 //Import des definitions de routes
 const routerWelcome = require('./routers/welcomeroute');
 const routerQcm = require('./routers/qcmroute');
@@ -19,3 +21,4 @@ app.use('/qcms', routerQcm);
 app.listen(port, () => {
     console.log(`Ecoute uniquement sur http://localhost:${port}`);
 });
+

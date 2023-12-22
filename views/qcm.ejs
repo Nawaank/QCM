@@ -11,9 +11,26 @@
 <div>
     <%= qcm.nbpoints %>
 </div>
-
 <div>
-    <%= qcm.author %>
+    <ul>
+    <% for (let question of qcm.questions)  { %>
+        <li>
+            <%= question.nom %>
+        </li>
+        <ul>
+            <% for (let reponse of question.reponses)  { %>
+                <li>
+                    <%= reponse.nom %>
+                </li>
+
+            <% } %>
+        </ul>
+        <li>
+            <p>Bonne réponse : <% question.reponses.non %> </p>
+        </li>
+    <% } %>
+    </ul>
 </div>
+
 
 <%- include('footer') -%>

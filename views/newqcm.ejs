@@ -1,8 +1,5 @@
-<!-- rajouter les headers
- -->
+<%- include('header') -%>
 
-<!--  mettre a jour le sujet et le nb de points
- -->
  <form action="/qcms/new" method="POST">
     <div>
         <label for="name">Nom</label>
@@ -16,7 +13,50 @@
         <label for="nbpoints">Nb points</label>
         <input type="number" id="nbpoints" name="nbpoints">
     </div>
+
+    <div class="questions">
+    </div>
+
+    <button class="addQuestionbtn">Ajouter une question</button>
+
     <input type="submit" value="Create">
 </form>
 
-<!-- ajouter les champs name, subject et nbpoints -->
+<script>
+    let questionsContainer = document.querySelector('.questions');
+let addQuestion = document.querySelector('.addQuestionbtn');
+let questionCounter = 1;
+
+addQuestion.addEventListener('click', function(e){
+    e.preventDefault();
+    let questionInput = `
+    <div class='question'>
+        <label for="question-${questionCounter}">Question ${questionCounter}</label>
+        <input type="text" id="question-${questionCounter}" name="questions[${questionCounter}][nom]">
+        <div class='reponses'>
+            <div class="reponse">
+                <input type="text" name='questions[${questionCounter}][reponses][1][nom]'>
+                <input type="checkbox" name='questions[${questionCounter}][reponses][1][isTrue]' >
+            </div>
+            <div class="reponse">
+                <input type="text" name='questions[${questionCounter}][reponses][2][nom]'>
+                <input type="checkbox" name='questions[${questionCounter}][reponses][2][isTrue]' >
+            </div>
+            <div class="reponse">
+                <input type="text" name='questions[${questionCounter}][reponses][3][nom]'>
+                <input type="checkbox" name='questions[${questionCounter}][reponses][3][isTrue]' >
+            </div>
+            <div class="reponse">
+                <input type="text" name='questions[${questionCounter}][reponses][4][nom]'>
+                <input type="checkbox" name='questions[${questionCounter}][reponses][4][isTrue]' >
+            </div>
+        </div>
+    </div>
+    `;
+    questionsContainer.innerHTML+= questionInput;
+
+    questionCounter++;
+});
+</script>
+
+<%- include('footer') -%>

@@ -1,33 +1,28 @@
-class myQCM { #id; #name; #theme; #subject; #author; #nbpoints;
+class Qcm { #id; #name; #subject; #nbpoints; #questions;
 
     constructor(qcmToCreeate) {
       this.#id = qcmToCreeate.id;
       this.#name = qcmToCreeate.name;
-      this.#theme = qcmToCreeate.theme;
       this.#subject = qcmToCreeate.subject;
-      this.#author = qcmToCreeate.author;
       this.#nbpoints = qcmToCreeate.nbpoints;
+      this.#questions = qcmToCreeate.questions;
     }
 
     get id() {
         return this.#id;
     }
-    get theme() {
-        return this.#theme;
-    }
     get name(){
         return this.#name;
-    }
-    get author(){
-        return this.#author;
     }
     get nbpoints(){
         return this.#nbpoints
     }
     get subject(){
-        return this.#theme;
+        return this.#subject;
+    }
+    get questions(){
+        return this.#questions;
     }
 }
 
-
-module.exports = myQCM;
+module.exports = Qcm;

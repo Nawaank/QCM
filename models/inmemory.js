@@ -11,11 +11,10 @@ const qcms = [
 
 
 const addQcm = (rawObject) => {
-    //FIXME: fonction qui ajoute un element a la liste et incremente l'id
     let maxId = 0;
     //recupere l'id le plus grand
     qcms.forEach((qcm) => {
-        if (maxId < qcm.Id) {
+        if (maxId < qcm.id) {
             maxId = qcm.id;
         }
     });
@@ -25,32 +24,12 @@ const addQcm = (rawObject) => {
             id: maxId + 1,
             name: rawObject.name,
             subject: rawObject.subject,
-            nbpoints: Number(rawObject.nbpoints)
-        });
+            nbpoints: Number(rawObject.nbpoints),
+            questions: rawObject.questions,
+        }); console.log(qcm.questions)
     // ajout du QCM a la liste
     qcms.push(qcm);
 }
-//////////////////// QUESTION ////////////////////////////////
 
-const question = [
-    new Question ({id: 0, name: 'Pourquoi feur ? '}),
-    new Question ({id: 1, name: 'Pourquoi canard ?'})
-];
 
-const addQuestion =(rawObject) => {
-    let maxId = 0;
-    questions.forEach((question) => {
-        if (maxId < question.id) {
-            maxId = question.id;
-        }
-    });
-
-    const question = new Question(
-        {
-            id: maxId + 1,
-            name: rawObject.name,
-        });
-    questions.push(question)
-}
-
-module.exports = { qcms, addQcm , questions, addQuestion};
+module.exports = { qcms, addQcm};
